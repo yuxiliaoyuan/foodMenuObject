@@ -86,8 +86,8 @@ export default {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     -moz-background-size: 100% 100%;
-    height: 45px;
-    width: 80%;
+    height: 40px;
+    width: 60%;
     margin-top: 10px;
     text-align: center;
     line-height: 45px;
@@ -103,5 +103,6 @@ export default {
     bottom: 5px;
     margin-left: 10%;
     margin-right: 10%;
+    font-size: small;
   }
 </style>
