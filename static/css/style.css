@@ -1,0 +1,108 @@
+.wrap {
+  margin: 0 auto;
+  width: 16.666666rem;
+}
+
+/*wrap*/
+.title-center {
+  text-align: center;
+  margin: 5% 0;
+  font-size: 1.333333rem;
+  font-weight: 600;
+  color: #171717;
+  letter-spacing: 0;
+}
+
+/*title*/
+.cm-fs span:first-child {
+  font-weight: 600;
+}
+
+.div-img {
+  width: 40%;
+  height: 12.4%;
+  margin-right: 2.7%;
+}
+
+.div-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.div-top {
+  margin: 8% 0;
+}
+
+.span-w {
+  border: 1px solid #333;
+  border-radius: 27px;
+  width: 55%;
+  height: 5%;
+  text-align: center;
+  padding: 4%;
+}
+
+.i-w {
+  width: 35%;
+  height: 4%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.i-w img {
+  width: 100%;
+  height: 100%;
+}
+
+.li-border {
+  border-bottom: 1px solid #dddd;
+  padding-bottom: 5%;
+  margin-bottom: 5%;
+}
+
+.qingdao {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 5%;
+  color: #B6B6B6;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+}
+
+/*青岛*/
+.fenxiang {
+  background-image: linear-gradient(-43deg, #FFB349 0%, #FF8D38 100%);
+  border-radius: 49px;
+  width: 43%;
+  height: 8%;
+  position: fixed;
+  bottom: 10%;
+  left: 30%;
+  text-align: center;
+
+}
+
+.fx-img {
+  width: 18%;
+  height: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 6%;
+}
+
+.fx-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.fx {
+  display: inline-block;
+  color: #fff;
+  vertical-align: middle;
+  margin-top: 6%;
+}
+
+/*分享*/
