@@ -12,7 +12,7 @@
         </van-list>
       </van-pull-refresh>
     </div>
-    <div id="share">
+    <div id="share" @click="share">
       <b>分 享 有 礼 ></b>
     </div>
     <div id="company">青岛禹锡智慧科技有限公司 技术支持</div>
@@ -25,6 +25,9 @@ import {
   Button, Icon, PullRefresh, List,
   Cell, Row, Col, Image
 } from 'vant'
+import utils from '../assets/script/utils'
+import config from '../assets/script/config'
+import Axios from 'axios'
 
 export default {
   name: 'App',
@@ -46,27 +49,7 @@ export default {
       bgstyle: {
         backgroundSize: $(document).width() + ' ' + $(document).height()
       },
-      sites:
-          [{
-            img: '/static/img/recommend.png',
-            name: '红烧茄子',
-            description: '这里是菜品介绍',
-            likes: '1000',
-            islike: 'like'
-          }, {
-            img: '/static/img/unrecommend.png',
-            name: '尖椒鸡蛋',
-            description: '这里是菜品介绍',
-            likes: '1280',
-            islike: 'like-o'
-          }, {
-            img: '/static/img/unrecommend.png',
-            name: '糖醋排骨',
-            description: '这里是菜品介绍',
-            likes: '9999',
-            islike: 'like'
-          }]
-
+      sites: []
     }
   },
   mounted () {
@@ -74,6 +57,7 @@ export default {
     let pgheiht = $(document).height()
     $('#app').height(pgheiht)
     $('#app').width(pgwidth)
+    this.onLoad()
   },
   methods: {
     share () {
@@ -81,9 +65,10 @@ export default {
     },
     onLoad () {
       console.log('Loding ...')
-      this.isFinished = false
+      let merchantID = utils.getURLParameterValue('mid')
+      this.isFinished = true
       this.isLoading = false
-      this.sites = [{
+      let defaultMenus = [{
         img: '/static/img/recommend.png',
         name: '红烧茄子',
         description: '这里是菜品介绍',
@@ -126,6 +111,31 @@ export default {
         likes: '9999',
         islike: 'like-o'
       }]
+      if (merchantID) {
+        console.log('商户ID' + merchantID)
+        // 第一种方式 (无法更也买呢 -- 封存)
+        // $.ajax(config.menuAPI, {
+        //   type: 'get',
+        //   success: function (data) {
+        //     console.debug(JSON.stringify(data))
+        //     this.sites = data.data
+        //   },
+        //   error: function (error) {
+        //     console.error(error.toString())
+        //   }
+        // })
+        // 第二种方式
+        Axios.get(config.menuAPI).then(res => {
+          console.log(JSON.stringify(res.data.data))
+          defaultMenus = res.data.data
+          this.sites = res.data.data
+        }).catch(error => {
+          console.log('Error', error.getMessages())
+        })
+      } else {
+        this.sites = defaultMenus
+      }
+      return defaultMenus
     },
     onRefresh () {
       console.log('Refresh ...')
@@ -157,6 +167,10 @@ export default {
     margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   #share {
@@ -171,6 +185,10 @@ export default {
     text-align: center;
     line-height: 45px;
     color: azure;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   #company {
@@ -183,6 +201,10 @@ export default {
     margin-left: 10%;
     margin-right: 10%;
     font-size: small;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   .item_class {
     width: 90%;
