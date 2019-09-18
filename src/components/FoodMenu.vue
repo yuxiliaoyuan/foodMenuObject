@@ -3,11 +3,11 @@
     <div id="menu">
       <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
         <van-list v-model="isLoading" :finished="isFinished" @load="onLoad" style="margin-top: 5px;">
-          <van-row type="flex" justify="space-between" v-for="(item, index) in sites" class="item_class" :key="index">
+          <van-row type="flex" justify="space-between" v-for="(item, index) in sites" class="item_class" :key="index" >
             <van-col span="4"><div class="item_index">{{index + 1}}</div></van-col>
             <van-col span="12" align="left" style="line-height: 45px;">{{item.name}}</van-col>
             <van-col span="4" style="line-height: 45px;">{{item.likes}}</van-col>
-            <van-col span="4"><van-image class="item_img" :src="item.img"></van-image></van-col>
+            <van-col span="4"><van-image class="item_img" :src="item.img" :class='{active:item.is}' @click='bindClick(index)'></van-image></van-col>
           </van-row>
         </van-list>
       </van-pull-refresh>
@@ -62,6 +62,16 @@ export default {
   methods: {
     share () {
       alert('share it')
+      bindClick(index){
+					if(this.dataList[index].is){
+						this.dataList[index].is=false;
+						this.dataList[index].likes=Number(this.dataList[index].likes)-1;
+					}else{
+						this.dataList[index].is=true;
+						this.dataList[index].likes=Number(this.dataList[index].likes)+1;
+					}
+					
+				}
     },
     onLoad () {
       console.log('Loding ...')
@@ -69,47 +79,54 @@ export default {
       this.isFinished = true
       this.isLoading = false
       let defaultMenus = [{
-        img: '/static/img/recommend.png',
+        img: '/static/img/unrecommend.png',
         name: '红烧茄子',
         description: '这里是菜品介绍',
-        likes: '9999',
-        islike: 'like'
+        likes: '99999',
+        islike: 'like',
+        is:'false'
       }, {
         img: '/static/img/unrecommend.png',
         name: '韭菜鸡蛋',
         description: '这里是菜品介绍',
-        likes: '9999',
-        islike: 'like-o'
+        likes: '85663',
+        islike: 'like-o',
+         is:'false'
       }, {
         img: '/static/img/unrecommend.png',
         name: '红烧肉',
         description: '这里是菜品介绍',
-        likes: '9999',
-        islike: 'like-o'
+        likes: '75556',
+        islike: 'like-o',
+         is:'false'
       }, {
         img: '/static/img/unrecommend.png',
         name: '东坡肘子',
         description: '这里是菜品介绍',
-        likes: '9999',
-        islike: 'like-o'
+        likes: '32222',
+        islike: 'like-o',
+         is:'false'
       }, {
         img: '/static/img/unrecommend.png',
         name: '蚂蚁上树',
         description: '这里是菜品介绍',
-        likes: '9999',
-        islike: 'like-o'
+        likes: '1232',
+        islike: 'like-o',
+         is:'false'
       }, {
         img: '/static/img/unrecommend.png',
         name: '地三鲜',
         description: '这里是菜品介绍',
-        likes: '9999',
-        islike: 'like-o'
+        likes: '999',
+        islike: 'like-o',
+         is:'false'
       }, {
         img: '/static/img/unrecommend.png',
         name: '尖椒豆皮',
         description: '这里是菜品介绍',
-        likes: '9999',
-        islike: 'like-o'
+        likes: '99',
+        islike: 'like-o',
+         is:'false'
       }]
       if (merchantID) {
         console.log('商户ID' + merchantID)
