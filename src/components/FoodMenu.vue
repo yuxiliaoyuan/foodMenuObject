@@ -108,7 +108,7 @@ export default {
          is:'false'
       }, {
         img: '/static/img/unrecommend.png',
-        name: '蚂蚁上树',
+        name: '蚂蚁上树', 
         description: '这里是菜品介绍',
         likes: '1232',
         islike: 'like-o',
